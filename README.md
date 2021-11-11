@@ -1,11 +1,13 @@
 # Project_Biologia
 
 Input:
- - Cartella con file.csv
+  - Cartella con file.csv
 
 Output 
- - Cartella dei risultati in file.xslx
+  - Cartella dei risultati in file.xslx
 
+
+------------------------------------------------------------------------------
 0. La funzione explore_dir(dir):
  
  - prende in input la Cartella contenente gli esperimenti
