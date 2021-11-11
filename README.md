@@ -1,10 +1,10 @@
 # Project_Biologia
 
 Input:
-  - Cartella con file.csv
+  - Cartella degli esperimenti
 
 Output 
-  - Cartella dei risultati in file.xslx
+  - Cartella dei risultati 
 
 
 ------------------------------------------------------------------------------
