@@ -3,6 +3,7 @@ import csv
 import xlsxwriter
 import sys
 
+
 # Function that checks if a file/directory is the one that we want to analyze
 def check(dir):
 
@@ -11,11 +12,19 @@ def check(dir):
     return True
 
 # Function that explores the first layer of the Directories, where there are all the Directories of experiments
-def explore_dir(dir):
+def explore_dir(dir, dir_o):
     # Checks if exists a directory called "Results" in which we put the Files of results. If this directory
     # does not exists, then create it
-    if not os.path.exists("Results"):
-        os.mkdir("Results")
+    if not os.path.exists(dir_o + "Results"):
+        os.mkdir(dir_o + "Results")
+    else:
+        x = input("La cartella esiste gia', vuoi sovrascriverla? \n [Y/N?] ")
+        if (x == "N" or x == "n"):
+            y = input ("Dove vuoi salvarla? (specificare il path della cartella dove si vuole salvarlo)\n")
+            if not os.path.exists(y + "/" + "Results"):
+                os.mkdir(y + "/" + "Results")
+            dir_o = y +"/"
+        
     # Explores the directories
     for i in os.listdir(dir):
         # Checks if the directory is legit
@@ -24,7 +33,7 @@ def explore_dir(dir):
         # Checks for a space in the path (Windows does not like that :D)
         file_xlsx = i.replace(" ", "_")
         # Creates the file in which we put the results
-        workbook = xlsxwriter.Workbook("Results" + "/" + file_xlsx + '.xlsx')
+        workbook = xlsxwriter.Workbook(dir_o + "Results" + "/" + file_xlsx + '.xlsx')
         # Calling the function
         analisi_dati(dir + "/" + i, workbook)
         workbook.close()
@@ -93,10 +102,19 @@ def analisi_dati(dir, workbook):
 if __name__ == "__main__":
     try:
         # Taking in input the directory, in this case the one that has the experiments
-        dir = sys.argv[1]
+        path_i = sys.argv[1]
+        print(path_i)
+
+        try:
+            path_o = sys.argv[2]
+            path_o = path_o + "/"
+        
+
+        except Exception as e : path_o = ""
+        
         # Checking if the directory exists, if this is true, then explore the directory
-        if os.path.exists(dir) and os.path.isdir(dir):
-            explore_dir(dir)
+        if os.path.exists(path_i) and os.path.isdir(path_i):
+            explore_dir(path_i,path_o)
         # Else print an Error message end exit
         else:
             print("The directory doesn't exixst!") 
