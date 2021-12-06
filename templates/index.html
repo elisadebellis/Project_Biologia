@@ -1,5 +1,5 @@
-<html>
-    <head>
+
+
         <!DOCTYPE html>
         <html>
         <head>
@@ -55,19 +55,38 @@
    
         </form>
                 <hr>
-                <h3>Test</h3>
+                
+                <label for="myfile">Select a file:</label>
                 <p>Show a file-select field which allows a file to be chosen for upload:</p>
-                <form action="/result" method="post" enctype="multipart/form-data">
-                    <input type="file" name="fileupload" id="fileToUpload">
-                    <input type="submit" value="Upload File" name="submit">
+                <form action="upload.html" method="post" enctype="multipart/form-data">
+                  <input type="file" name="fileupload" id="fileToUpload">
+                  <input type="submit" value="Upload File" name="submit">
+              </form>
+
+              <p> {{ text }} </p>
+
+          <script>
+            document.getElementById('file').onchange = function(){
+
+            var file = this.files[0];
+
+            var reader = new FileReader();
+            reader.onload = function(progressEvent){
+              // Entire file
+              console.log(this.result);
+
+              // By lines
+              var lines = this.result.split('\n');
+              for(var line = 0; line < lines.length; line++){
+                console.log(lines[line]);
+              }
+            };
+            reader.readAsText(file);
+            };
+          </script>
               
-          <label for="myfile">Select a file:</label>
-          <input id="fileSelect" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-Excel" />   <br><br>
-         <!-- webkitdirectory directory multiple -->
-         {% if name %}
-         {{name}}
-         {% endif %}
-          <input type="Submit" id='script' name="scriptbutton" value=" Run Script " onclick="viewfile()">
+          
+          
    
         </form>
               </div>

@@ -1,8 +1,11 @@
-from flask import Flask, render_template, request,redirect, url_for
+from flask import Flask, render_template, request ,redirect, url_for
 import os
 import csv
 import xlsxwriter
 import sys
+from werkzeug.utils import secure_filename
+import io
+
 
 app = Flask(__name__)
 
@@ -12,31 +15,17 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/result", methods = ['POST',"GET"])
-def result(): 
-    id =""
+@app.route('/upload.html',methods = ['POST'])
+def upload_route_summary():
     if request.method == 'POST':
 
         # Create variable for uploaded file
-        f = request.files['fileupload']  
-
-        #store the file contents as a string
-        fstring = f.read()
+        f = request.files['fileupload']
+        f.seek(0)
         
-        #create list of dictionaries keyed by header row
-        csv_dicts = [{k: v for k, v in row.items()} for row in csv.DictReader(fstring.splitlines(), skipinitialspace=True)]
-        
-        
-        
-        for i in csv_dicts:
-            for key in i:
-                print(key)
-
-    
-        
-        #do something list of dictionaries
-    
-    return render_template("index.html")
+        content = f.read()
+        content = str(content, 'utf-8')
+        return render_template('index.html', text=content)
 
 
     
