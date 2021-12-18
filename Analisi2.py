@@ -21,6 +21,14 @@ def home():
 def main():
     return render_template("main.html")
 
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+    
 @app.route('/upload.html',methods = ['POST'])
 def upload_route_summary():
     if request.method == 'POST':
@@ -35,7 +43,7 @@ def upload_route_summary():
         for i in os.listdir("Temporary"+ "/Results"):
             print(i)
 
-    return render_template('main.html')
+    return render_template('main.html', text= "Done")
 
 
 @app.route('/file.doc')

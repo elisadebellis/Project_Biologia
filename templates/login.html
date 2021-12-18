@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      
+      <title>DP&A</title>
+  
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='styles/index.css') }}" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="{{ url_for('static', filename='script/index.js') }}"></script>
+    </head>
+
+    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="home"><img src="{{url_for('static', filename='media/scritta1.png')}}" class="navbar-left" style="width:60px;"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="register"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="login" class="container-fluid">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+        <div class="panel panel-default" style="margin-top: 5%;border-color: aliceblue; ">
+         <div class="panel-heading">Login</div>
+        <div class="panel-body" style="margin: 15px;">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  <br>
+                  <p class="text-right">oppure <a href="register">Registrati</a></label></p><br>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Sign-in</button>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
